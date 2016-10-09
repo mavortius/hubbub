@@ -1,5 +1,19 @@
 .gradle
 build/
+/prodDb.*
+*.iml
+*.ipr
+*.iws
+.idea
+.gradle
+.asscache
+build
+out
+logs
+classes
+/target
+
+
 
 # Ignore Gradle GUI config
 gradle-app.setting
