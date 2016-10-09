@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: hubbub
+        defaultPackage: com.grailsinaction.hubbub
     spring:
         transactionManagement:
             proxies: false
