@@ -1,2 +1,2 @@
-# hubbub
-A Twitter-like sample application build with Grails 3 framework
+# Hubbub 
+Social Networking on Grails
