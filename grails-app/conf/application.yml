@@ -79,6 +79,7 @@ endpoints:
 
 ---
 hibernate:
+    format_sql: true
     cache:
         queries: false
         use_second_level_cache: true
@@ -98,9 +99,11 @@ environments:
     development:
         dataSource:
             dbCreate: update
+            logSql: true
     test:
         dataSource:
             dbCreate: validate
+            logSql: true
     production:
         dataSource:
             dbCreate: validate
