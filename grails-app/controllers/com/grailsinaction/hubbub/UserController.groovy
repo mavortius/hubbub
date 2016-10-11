@@ -15,4 +15,20 @@ class UserController {
             term: params.loginId,
             totalUsers: User.count()    ]
     }
+
+    def advancedSearch() { }
+
+    def advancedResults() {
+        def profileProps = Profile.metaClass.properties*.name
+        def profiles = Profile.withCriteria {
+            "${params.queryType}" {
+                params.each { field, value ->
+                    if(profileProps.grep(field) && value) {
+                        ilike(field, value)
+                    }
+                }
+            }
+        }
+        [ profiles:profiles ]
+    }
 }
