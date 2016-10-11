@@ -65,4 +65,15 @@ class PostIntegrationSpec extends Specification {
         1 == groovyPost.tags.size()
         2 == bothPost.tags.size()
     }
+
+    def "Testing Query By Example with 'Like' functionality"() {
+        given: "A example post from db"
+        def post = Post.get(1)
+
+        when: "Search by given example post"
+        def posts = Post.findAllLike(post)
+
+        then:
+        posts.size() >= 1
+    }
 }
