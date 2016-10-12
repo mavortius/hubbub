@@ -1,7 +1,6 @@
 package com.grailsinaction.hubbub
 
 class User {
-
     String loginId
     String password
     Date dateCreated

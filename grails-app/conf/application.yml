@@ -94,12 +94,12 @@ dataSource:
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     url: jdbc:mysql://localhost:3306/hubbub
     username: root
-    password: sepai123
+    password: 606638
 
 environments:
     development:
         dataSource:
-            dbCreate: update
+            dbCreate: create
     test:
         dataSource:
             dbCreate: validate
