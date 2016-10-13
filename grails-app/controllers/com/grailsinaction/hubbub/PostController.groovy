@@ -43,4 +43,10 @@ class PostController {
             render view: 'timeline', model: [user: session.user.refresh()]
         }
     }
+
+    def global() {
+        def offset = params.offset ?: 0
+        def max = params.max ?: 5
+        [posts: Post.list(offset: offset, max: max), postCount: Post.count()]
+    }
 }
