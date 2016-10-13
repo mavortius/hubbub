@@ -6,6 +6,20 @@
 </head>
 <body>
     <h1>Timeline for ${user.profile ? user.profile.fullName : user.loginId}</h1>
+    <g:if test="${flash.message}">
+        <div class="flash">
+            ${flash.message}
+        </div>
+    </g:if>
+    <div id="newPost">
+        <h3>What is ${user.profile ? user.profile.fullName : user.loginId} hacking on right now?</h3>
+        <p>
+            <g:form action="addPost" id="${params.id}">
+                <g:textArea name="content" id="postContent" rows="3" cols="50" /><br />
+                <g:submitButton name="post" value="Post" />
+            </g:form>
+        </p>
+    </div>
     <div id="allPosts">
        <g:each var="post" in="${user.posts}">
            <div class="postEntry">

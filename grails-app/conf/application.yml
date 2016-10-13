@@ -99,7 +99,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create
+            dbCreate: update
     test:
         dataSource:
             dbCreate: validate
