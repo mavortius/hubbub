@@ -32,4 +32,15 @@ class PostController {
         }
         redirect action: 'timeline', id: id
     }
+
+    def personal() {
+        if(!session.user) {
+            redirect controller: 'login', action: 'form'
+            return
+        } else {
+            // Need to reattach the user domain object to the session using
+            // the refresh() method.
+            render view: 'timeline', model: [user: session.user.refresh()]
+        }
+    }
 }

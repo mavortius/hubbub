@@ -116,6 +116,14 @@ dd {
     margin: 4px;
 }
 
+.profilePic {
+    background: #FFD;
+    border: 1px solid black;
+    color: black;
+    padding: 1em;
+    margin: 1em;
+}
+
 .flash {
     background: #FFD;
     border: 1px solid black;
