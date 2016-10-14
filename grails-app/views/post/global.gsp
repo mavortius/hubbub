@@ -12,17 +12,10 @@
         </div>
     </g:if>
     <div id="allPosts">
-        <g:each var="post" in="${posts}">
-            <div class="postEntry">
-                ${post.content}
-            </div>
-            <div class="postDate">
-                ${post.dateCreated}
-            </div>
-        </g:each>
+        <g:render template="postEntry" collection="${posts}" var="post" />
     </div>
     <div class="pagination" style="text-align: center;">
-        <g:paginate total="${postCount}" max="5" />
+        <g:paginate total="${postCount}" max="${max}" />
     </div>
 </body>
 </html>

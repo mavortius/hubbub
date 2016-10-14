@@ -5,6 +5,11 @@ body {
     font-family: "Helvetica";
 }
 
+.navbar-brand > img {
+    height: 150%;
+    width: auto;
+}
+
 #hd {
     padding: 1em;
 
@@ -29,6 +34,7 @@ body {
     margin-top: 0.5em;
     background: white;
     padding: 1em;
+    width: 80%;
 }
 
 #ft {
@@ -39,24 +45,6 @@ body {
     color: white;
     font-family: "Lucinda Grande",Arial;
     font-size: 12pt;
-}
-
-#sidebar {
-
-    margin-top: 3em;
-    background-color: #d3e3f5;
-    padding: 1em;
-    border: 1px solid lightblue;
-    
-}
-
-#sidebar h3 {
-    color: #343534;
-    font-weight: bold;
-    border-bottom: 1px solid lightslategray;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    
 }
 
 #newPost h3 {
@@ -88,6 +76,16 @@ dd {
     text-align: right;
 }
 
+.spinner {
+    background: url(../images/spinner.gif) 50% 50% no-repeat transparent;
+    height: 16px;
+    width: 16px;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-indent: -9999px;
+}
 
 .postImage {
     margin: 0.5em;
@@ -116,14 +114,6 @@ dd {
     margin: 4px;
 }
 
-.profilePic {
-    background: #FFD;
-    border: 1px solid black;
-    color: black;
-    padding: 1em;
-    margin: 1em;
-}
-
 .flash {
     background: #FFD;
     border: 1px solid black;
@@ -138,5 +128,23 @@ dd {
     color: black;
     padding: 1em;
     margin: 1em;
+    font-weight: bold;
+}
+
+.step {
+    padding-left: 1em;
+}
+
+.prevLink {
+    padding-left: 1em;
+}
+
+
+.nextLink {
+    padding-left: 1em;
+}
+
+.currentStep {
+    padding-left: 1em;
     font-weight: bold;
 }
