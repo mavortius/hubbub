@@ -18,8 +18,18 @@
             var tinyUrl = data.urls.small;
             var postBox = $("#postContent")
             postBox.val(postBox.val() + tinyUrl);
-            // toggleTinyUrl();
+            toggleTinyUrl();
             $("#tinyUrl input[name='fullUrl']").val('');
+        }
+        function toggleTinyUrl() {
+            var toggleText = $('#showHideUrl');
+            if ($('#tinyUrl').is(':visible')) {
+                $('#tinyUrl').slideUp(300);
+                toggleText.innerText = 'Hide TinyURL';
+            } else {
+                $('#tinyUrl').slideDown(300);
+                toggleText.innerText = 'Show TinyURL';
+            }
         }
     </g:javascript>
 </head>
@@ -44,7 +54,7 @@
                         onLoading="showSpinner(true)"
                         onComplete="showSpinner(false)" />
                 <asset:image src="spinner.gif" id="spinner" style="display: none;" />
-                <a href="#" id="showHideUrl" onclick="$('#tinyUrl').slideToggle(300); return false;">
+                <a href="#" id="showHideUrl" onclick="toggleTinyUrl(); return false;">
                     Show TinyUrl
                 </a>
             </g:form>
