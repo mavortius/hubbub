@@ -14,6 +14,13 @@
             if (visible) $('#spinner').show();
             else $('#spinner').hide();
         }
+        function addTinyUrl(data) {
+            var tinyUrl = data.urls.small;
+            var postBox = $("#postContent")
+            postBox.val(postBox.val() + tinyUrl);
+            // toggleTinyUrl();
+            $("#tinyUrl input[name='fullUrl']").val('');
+        }
     </g:javascript>
 </head>
 <body>
@@ -36,12 +43,21 @@
                         onSuccess="clearPost(data)"
                         onLoading="showSpinner(true)"
                         onComplete="showSpinner(false)" />
-                <asset:image src="spinner.gif" id="spinner" style="display: none" />
+                <asset:image src="spinner.gif" id="spinner" style="display: none;" />
+                <a href="#" id="showHideUrl" onclick="$('#tinyUrl').slideToggle(300); return false;">
+                    Show TinyUrl
+                </a>
             </g:form>
+            <div id="tinyUrl" style="display: none;">
+                <g:formRemote name="tinyUrlForm" url="[action: 'tinyUrl']" onSuccess="addTinyUrl(data);">
+                    TinyUrl: <g:textField name="fullUrl" />
+                    <g:submitButton name="submit" value="Make Tiny" />
+                </g:formRemote>
+            </div>
         </p>
     </div>
-    <div id="allPosts">
-       <g:render template="postEntry" collection="${user.posts}" var="post" />
+<div id="allPosts">
+    <g:render template="postEntry" collection="${user.posts}" var="post" />
     </div>
 </body>
 </html>

@@ -63,4 +63,13 @@ class PostController {
         def max = params.max ?: 5
         [posts: Post.list(offset: offset, max: max, sort: 'dateCreated', order: 'desc'), postCount: Post.count(), max: max]
     }
+
+    def tinyUrl(String fullUrl) {
+        def origUrl = fullUrl?.encodeAsURL()
+        def tinyUrl = new URL("http://tinyurl.com/api-create.php?url=${origUrl}").text
+
+        render(contentType:"application/json") {
+            urls(small: tinyUrl, full:fullUrl)
+        }
+    }
 }
