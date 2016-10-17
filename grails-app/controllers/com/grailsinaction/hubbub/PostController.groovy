@@ -5,6 +5,7 @@ class PostController {
     static defaultAction = "home"
 
     def postService
+    def springSecurityService
 
     def home() {
         if (!params.id) {
@@ -13,8 +14,8 @@ class PostController {
         redirect action: 'timeline', params: params
     }
 
-    def timeline(String id) {
-        def user = User.findByLoginId(id)
+    def timeline() {
+        def user = springSecurityService.currentUser
 
         if(user) {
             [user:user]
@@ -23,20 +24,21 @@ class PostController {
         }
     }
 
-    def addPost(String id, String content) {
+    def addPost(String content) {
         try {
-            def newPost = postService.createPost(id, content)
+            def user = springSecurityService.currentUser
+            def newPost = postService.createPost(user.loginId, content)
             flash.message = "Added new post: ${newPost.content}"
         } catch (PostException e) {
             flash.message = e.message
         }
-        redirect action: 'timeline', id: id
+        redirect action: 'timeline', id: user.loginId
     }
 
-    def addPostAjax(String id, String content) {
+    def addPostAjax(String content) {
         try {
-            def user = User.findByLoginId(id)
-            def newPost = postService.createPost(id, content)
+            def user = springSecurityService.currentUser
+            def newPost = postService.createPost(user.loginId, content)
             def recentPosts = Post.findAllByUser(user, [sort: 'dateCreated', order: 'desc', max: 20])
 
             render template: 'postEntry', collection: recentPosts, var: 'post'
@@ -48,14 +50,9 @@ class PostController {
     }
 
     def personal() {
-        if(!session.user) {
-            redirect controller: 'login', action: 'form'
-            return
-        } else {
-            // Need to reattach the user domain object to the session using
-            // the refresh() method.
-            render view: 'timeline', model: [user: session.user.refresh()]
-        }
+        def user = springSecurityService.currentUser
+
+        render view: 'timeline', model: [user: user]
     }
 
     def global() {

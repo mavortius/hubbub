@@ -15,28 +15,72 @@
 <body>
 
 <div>
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                   <asset:image src="headerlogo.png" alt="hubbub logo"/>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" >
-                <ul class="nav navbar-nav">
-                    <g:pageProperty name="page.nav" />
-                </ul>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <asset:image src="headerlogo.png" alt="hubbub logo"/>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" role="navigation" aria-expanded="false" >
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <g:link uri="/timeline" >My Timeline</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="post" action="global">Global Timeline</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="user" action="register">Register</g:link>
+                        </li>
+                    </ul>
+                    <sec:ifNotLoggedIn>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <g:link controller="auth" action="form">Login</g:link>
+                            </li>
+                        </ul>
+                    </sec:ifNotLoggedIn>
+                    <sec:ifLoggedIn>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Hello,
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <g:link controller="user" action="profile">
+                                            <i class="fa fa-user"></i>
+                                            Profile
+                                        </g:link>
+                                    </li>
+                                    <li class="divider">
+                                        <a></a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout">
+                                            <i class="glyphicon glyphicon-log-out"></i>
+                                            Exit
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </sec:ifLoggedIn>
+                </div>
             </div>
         </div>
     </div>
-    <div id="bd"><!-- start body -->
-      <g:layoutBody/>
+    <div id="bd" class="container"><!-- start body -->
+    <g:layoutBody/>
     </div>  <!-- end body -->
     <div id="ft">
         <div id="footerText">Hubbub - Social Networking on Grails</div>

@@ -4,6 +4,8 @@ class UserController {
 
     static scaffold = User
 
+    def springSecurityService
+
     def search() { }
 
     def results(String loginId) {
@@ -64,8 +66,8 @@ class UserController {
         }
     }
 
-    def profile(String id) {
-        def user = User.findByLoginId(id)
+    def profile() {
+        def user = springSecurityService.currentUser
 
         if(user) {
             [profile:user.profile]

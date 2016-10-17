@@ -11,7 +11,7 @@ class UrlMappings {
 
         "/users/$id"(controller: "post", action: "timeline")
         "/timeline"(controller: "post", action: "personal")
-
+        "/login/form"(controller: "auth", action: "form")
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
