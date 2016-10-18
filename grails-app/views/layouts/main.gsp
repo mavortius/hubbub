@@ -49,7 +49,6 @@
                     </sec:ifNotLoggedIn>
                     <sec:ifLoggedIn>
                         <ul class="nav navbar-nav navbar-right">
-                            <g:set var="security" bean="springSecurityService" />
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     Hello, <hub:loggedUsername />
@@ -66,10 +65,10 @@
                                         <a></a>
                                     </li>
                                     <li>
-                                        <a href="/logout">
+                                        <g:link controller="logout">
                                             <i class="glyphicon glyphicon-log-out"></i>
                                             Exit
-                                        </a>
+                                        </g:link>
                                     </li>
                                 </ul>
                             </li>

@@ -10,8 +10,8 @@ grails.plugin.springsecurity.auth.loginFormUrl = '/login/form'
 grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/login/form'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/timeline'
 grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
-
 grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern:'/'               ,access: ['permitAll']],
 		[pattern:'/post/global'	   ,access: ['permitAll']],
