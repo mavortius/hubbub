@@ -8,12 +8,20 @@ class PostRestController {
     def postService
     def springSecurityService
 
-    def index() {
-        respond Post.list()
+    def index(String v) {
+        def configName = 'v' + (v ?: 1)
+
+        JSON.use(configName) {
+            respond Post.list()
+        }
     }
 
-    def show(Integer id) {
-        respond Post.get(id)
+    def show(Integer id, String v) {
+        def configName = 'v' + (v ?: 1)
+
+        JSON.use(configName) {
+            respond Post.get(id)
+        }
     }
 
     def save(PostDetails post) {

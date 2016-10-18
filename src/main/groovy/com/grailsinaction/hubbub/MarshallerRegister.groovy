@@ -29,12 +29,23 @@ class MarshallerRegister {
             }
         }
 
-        JSON.registerObjectMarshaller(Post) { Post p ->
-            return [ id: p.id,
-                     published: dateFormatter.format(p.dateCreated),
-                     message: p.content,
-                     user: p.user.loginId,
-                     tags: p.tags.collect { it.name } ]
+        JSON.createNamedConfig("v1") { cfg ->
+            cfg.registerObjectMarshaller(Post) { Post p ->
+                return [ published: dateFormatter.format(p.dateCreated),
+                         message: p.content,
+                         user: p.user.loginId,
+                         tags: p.tags.collect { it.name } ]
+            }
+        }
+
+        JSON.createNamedConfig("v2") { cfg ->
+            cfg.registerObjectMarshaller(Post) { Post p ->
+                return [ published: dateFormatter.format(p.dateCreated),
+                         message: p.content,
+                         user: [ id: p.user.loginId,
+                                 name: p.user.profile.fullName ],
+                         tags: p.tags.collect { it.name } ]
+            }
         }
     }
 }

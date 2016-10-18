@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login</title>
+    <meta name="layout" content="main">
 </head>
 <body>
 <g:form url="/login/authenticate" method="POST">

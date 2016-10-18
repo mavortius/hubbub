@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
 <div>
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="navbar-inner">
@@ -50,9 +49,10 @@
                     </sec:ifNotLoggedIn>
                     <sec:ifLoggedIn>
                         <ul class="nav navbar-nav navbar-right">
+                            <g:set var="security" bean="springSecurityService" />
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Hello,
+                                    Hello, <hub:loggedUsername />
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
