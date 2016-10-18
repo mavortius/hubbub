@@ -5,6 +5,17 @@ class UtilTagLib {
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
     static namespace = "hub"
 
+    def springSecurityService
+
+    def loggedUsername = { attrs ->
+        if(springSecurityService.isLoggedIn()) {
+            def user = springSecurityService.currentUser
+            def username = user.profile ? user.profile.fullName : user.loginId
+
+            out << username
+        }
+    }
+
     def dateFromNow = { attrs ->
         def date = attrs.date
         def niceDate = getNiceDate(date)
