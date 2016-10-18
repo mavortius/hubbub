@@ -14,7 +14,7 @@
     <g:if test="${flash.message}">
         <div class="error">${flash.message}</div>
     </g:if>
-    <g:form action="register">
+    <g:uploadForm action="confirmRegister">
         <fieldset class="form">
             <div class="fieldcontain required">
                 <label for="loginId">Login ID</label>
@@ -25,26 +25,34 @@
                 <g:passwordField name="password"/>
             </div>
             <div class="fieldcontain required">
-                <label for="profile.fullName">Full Name</label>
-                <g:textField name="profile.fullName" value="${user?.profile?.fullName}"/>
+                <label for="passwordRepeat">Password (repeat)</label>
+                <g:passwordField name="passwordRepeat"/>
             </div>
             <div class="fieldcontain required">
-                <label for="profile.bio">Bio</label>
-                <g:textArea name="profile.bio" value="${user?.profile?.bio}"/>
+                <label for="photo">Photo</label>
+                <input type="file" name="photo" />
             </div>
             <div class="fieldcontain required">
-                <label for="profile.email">Email</label>
-                <g:textField name="profile.email" value="${user?.profile?.email}"/>
-                <g:hasErrors bean="${user}" field="profile.email">
-                    <g:eachError bean="${user}" field="profile.email">
+                <label for="fullName">Full Name</label>
+                <g:textField name="fullName" value="${user?.fullName}" />
+            </div>
+            <div class="fieldcontain required">
+                <label for="bio">Bio</label>
+                <g:textArea name="bio" />
+            </div>
+            <div class="fieldcontain required">
+                <label for="email">Email</label>
+                <g:textField name="email" value="${user?.email}" />
+                <g:hasErrors bean="${user}" field="email">
+                    <g:eachError bean="${user}" field="email">
                         <p style="color: red;"><g:message error="${it}" /></p>
                     </g:eachError>
                 </g:hasErrors>
             </div>
         </fieldset>
         <fieldset class="button">
-            <g:submitButton name="register" value="Register" />
+            <g:submitButton name="register" value="Confirm" />
         </fieldset>
-    </g:form>
+    </g:uploadForm>
 </body>
 </html>

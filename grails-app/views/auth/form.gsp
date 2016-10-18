@@ -8,7 +8,7 @@
 <g:form url="/login/authenticate" method="POST">
     <fieldset class="form">
         <div class="fieldcontain required">
-            <label for="username">Logim ID</label>
+            <label for="username">Login ID</label>
             <g:textField name="username" value="${loginId}" />
         </div>
         <div class="fieldcontain required">

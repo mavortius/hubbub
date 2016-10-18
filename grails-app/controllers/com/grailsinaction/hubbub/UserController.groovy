@@ -34,26 +34,16 @@ class UserController {
         [ profiles:profiles ]
     }
 
-    def register() {
-        if(request.method == "POST") {
-            def  user = new User(params)
+    def register() { }
 
-            if(user.validate()) {
-                user.save()
-                flash.message = "Successfully Created User"
-                redirect uri: '/'
-            } else {
-                flash.message = "Error Registering User"
-                [user:user]
-            }
-        }
-    }
-
-    def register2(UserRegistrationCommand urc) {
+    def confirmRegister(UserRegistrationCommand urc) {
         if(urc.hasErrors()) {
             render view: "register", model: [user:urc]
         } else {
             def user = new User(urc.properties)
+            user.passwordHash = springSecurityService.passwordEncoder ?
+                                    springSecurityService.encodePassword(urc.password) :
+                                        urc.password
             user.profile = new Profile(urc.properties)
 
             if(user.validate() && user.save()) {
@@ -88,7 +78,6 @@ class UserRegistrationCommand {
     String email
     String timezone
     String country
-    String jabberAddress
 
     static constraints = {
         importFrom Profile

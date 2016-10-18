@@ -73,7 +73,7 @@ class UserControllerSpec extends Specification {
         urc.validate()
 
         when: "the register action is invoked"
-        controller.register2(urc)
+        controller.confirmRegister(urc)
 
         then: "the user is registered and browser redirected"
         !urc.hasErrors()

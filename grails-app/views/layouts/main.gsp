@@ -30,18 +30,20 @@
                 </div>
                 <div class="navbar-collapse collapse" role="navigation" aria-expanded="false" >
                     <ul class="nav navbar-nav">
+                        <sec:ifLoggedIn>
                         <li>
                             <g:link uri="/timeline" >My Timeline</g:link>
                         </li>
+                        </sec:ifLoggedIn>
                         <li>
                             <g:link controller="post" action="global">Global Timeline</g:link>
-                        </li>
-                        <li>
-                            <g:link controller="user" action="register">Register</g:link>
                         </li>
                     </ul>
                     <sec:ifNotLoggedIn>
                         <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <g:link controller="user" action="register">Register</g:link>
+                            </li>
                             <li>
                                 <g:link controller="auth" action="form">Login</g:link>
                             </li>
