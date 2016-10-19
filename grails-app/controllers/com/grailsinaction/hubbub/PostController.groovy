@@ -5,7 +5,6 @@ class PostController {
     static defaultAction = "home"
 
     def postService
-    def springSecurityService
 
     def home() {
         if (!params.id) {
@@ -15,7 +14,7 @@ class PostController {
     }
 
     def timeline() {
-        def user = springSecurityService.currentUser
+        def user = authenticatedUser
 
         if(user) {
             [user:user]
@@ -26,7 +25,7 @@ class PostController {
 
     def addPost(String content) {
         try {
-            def user = springSecurityService.currentUser
+            def user = authenticatedUser
             def newPost = postService.createPost(user.loginId, content)
             flash.message = "Added new post: ${newPost.content}"
         } catch (PostException e) {
@@ -37,7 +36,7 @@ class PostController {
 
     def addPostAjax(String content) {
         try {
-            def user = springSecurityService.currentUser
+            def user = authenticatedUser
             def newPost = postService.createPost(user.loginId, content)
             def recentPosts = Post.findAllByUser(user, [sort: 'dateCreated', order: 'desc', max: 20])
 
@@ -50,7 +49,7 @@ class PostController {
     }
 
     def personal() {
-        def user = springSecurityService.currentUser
+        def user = authenticatedUser
 
         render view: 'timeline', model: [user: user]
     }

@@ -57,7 +57,7 @@ class UserController {
     }
 
     def profile() {
-        def user = springSecurityService.currentUser
+        def user = authenticatedUser
 
         if(user) {
             [profile:user.profile]

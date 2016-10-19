@@ -6,7 +6,6 @@ class PostRestController {
     static responseFormats = ["json", "xml"]
 
     def postService
-    def springSecurityService
 
     def index(String v) {
         def configName = 'v' + (v ?: 1)
@@ -26,7 +25,7 @@ class PostRestController {
 
     def save(PostDetails post) {
         if(!post.hasErrors()) {
-            def user = springSecurityService.currentUser
+            def user = authenticatedUser
             def newPost = postService.createPost(user.loginId, post.message)
 
             respond newPost, status: 201
