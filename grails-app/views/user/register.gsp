@@ -5,7 +5,7 @@
     <meta name="layout" content="main"/>
 </head>
 <body>
-    <h1>Register New User</h1>
+    <h3>Register New User</h3>
     <g:hasErrors>
         <div class="errors">
             <g:renderErrors bean="${user}" as="list" />

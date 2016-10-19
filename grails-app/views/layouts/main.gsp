@@ -67,7 +67,7 @@
                                         <a></a>
                                     </li>
                                     <li>
-                                        <g:link controller="logout">
+                                        <g:link url="/logoff">
                                             <i class="glyphicon glyphicon-log-out"></i>
                                             Exit
                                         </g:link>
