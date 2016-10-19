@@ -45,7 +45,7 @@
                                 <g:link controller="user" action="register">Register</g:link>
                             </li>
                             <li>
-                                <g:link controller="auth" action="form">Login</g:link>
+                                <g:link controller="login" action="auth" >Login</g:link>
                             </li>
                         </ul>
                     </sec:ifNotLoggedIn>
