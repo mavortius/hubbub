@@ -3,15 +3,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Hubbub &raquo;
+    <title><g:message code="application.title"></g:message> &raquo;
         <g:layoutTitle default="Welcome"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     <asset:stylesheet src="application.css"/>
     <g:layoutHead/>
 </head>
-
 <body>
 <div>
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -93,6 +92,5 @@
     <g:message code="spinner.alt" default="Loading&hellip;"/>
 </div>
 <asset:javascript src="application.js"/>
-
 </body>
 </html>

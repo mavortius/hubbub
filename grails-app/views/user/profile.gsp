@@ -5,7 +5,7 @@
     <meta name="layout" content="main" />
 </head>
 <body>
-    <div class="profilePic">
+    <div class="profile">
         <g:if test="${profile.photo}">
             <img src="${createLink(controller: 'image', action: 'renderImage', id: profile.user.loginId)}" />
         </g:if>

@@ -48,7 +48,8 @@ class UserController {
 
             if(user.validate() && user.save()) {
                 flash.message = "Welcome aboard, ${urc.fullName ?: urc.loginId}"
-                redirect uri: '/'
+
+                redirect controller: "login", action: "auth"
             } else {
                 // may not be unique loginId?
                 [user: urc]

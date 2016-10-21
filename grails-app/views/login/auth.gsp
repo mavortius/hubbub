@@ -5,33 +5,27 @@
     <meta name="layout" content="main">
 </head>
 <body>
-<h3><g:message code='springSecurity.login.header'/></h3>
+<h3></h3>
 <g:if test="${flash.message}">
-    <div class="errors">${flash.message}</div>
+    <div class="alert alert-danger" role="alert">${flash.message}</div>
 </g:if>
-<form id="loginForm" action="${postUrl ?: '/login/authenticate'}" method="post">
-    <fieldset class="form">
-        <div class="fieldcontain required">
-            <label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-            <g:textField name="username" value="${loginId}" />
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <h1 class="text-center login-title"><g:message code='springSecurity.login.header'/></h1>
+        <div class="account-wall">
+            <form id="loginForm" action="${postUrl ?: '/login/authenticate'}" method="post" class="form-signin">
+                <input name="username" value="${loginId}" type="text" class="form-control" placeholder="Username" required autofocus>
+                <input name="password" type="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"> Sign in</span></button>
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
+                    Remember me
+                </label>
+                <g:link controller="user" action="register" class="pull-right need-help">Not a user? Register</g:link><span class="clearfix"></span>
+            </form>
         </div>
-        <div class="fieldcontain required">
-            <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-            <g:passwordField name="password" />
-        </div>
-        <div class="fieldcontain required">
-            <input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
-            <label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
-        </div>
-    </fieldset>
-    <fieldset class="buttons">
-        <g:submitButton name="signIn" value="Sign in" />
-    </fieldset>
-</form>
-<script>
-    (function() {
-        document.forms['loginForm'].elements['username'].focus();
-    })();
-</script>
+    </div>
+</div>
 </body>
 </html>
