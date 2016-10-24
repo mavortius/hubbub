@@ -14,8 +14,8 @@
     <div id="allPosts">
         <g:render template="postEntry" collection="${posts}" var="post" />
     </div>
-    <div class="pagination" style="text-align: center;">
+    <nav aria-label="Page navigation">
         <g:paginate total="${postCount}" max="${max}" />
-    </div>
+    </nav>
 </body>
 </html>
