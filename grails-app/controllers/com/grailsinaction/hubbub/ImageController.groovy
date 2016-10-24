@@ -1,10 +1,13 @@
 package com.grailsinaction.hubbub
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class PhotoUploadCommand {
     byte[] photo
     String loginId
 }
 
+@Secured('hasRole("ROLE_ADMIN")')
 class ImageController {
     def upload(PhotoUploadCommand puc) {
         def user = User.findByLoginId(puc.loginId)
@@ -18,6 +21,7 @@ class ImageController {
         [userList:User.list()]
     }
 
+    @Secured('permitAll')
     def renderImage(String id) {
         def user = User.findByLoginId(id)
 

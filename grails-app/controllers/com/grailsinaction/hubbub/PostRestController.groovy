@@ -1,7 +1,9 @@
 package com.grailsinaction.hubbub
 
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured('isAuthenticated()')
 class PostRestController {
     static responseFormats = ["json", "xml"]
 

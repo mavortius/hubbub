@@ -1,5 +1,8 @@
 package com.grailsinaction.hubbub
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured('hasRole("ROLE_ADMIN")')
 class UserController {
 
     static scaffold = User
@@ -34,8 +37,10 @@ class UserController {
         [ profiles:profiles ]
     }
 
+    @Secured('permitAll')
     def register() { }
 
+    @Secured('permitAll')
     def confirmRegister(UserRegistrationCommand urc) {
         if(urc.hasErrors()) {
             render view: "register", model: [user:urc]
@@ -57,6 +62,7 @@ class UserController {
         }
     }
 
+    @Secured('isAuthenticated()')
     def profile() {
         def user = authenticatedUser
 

@@ -43,25 +43,29 @@
     <div id="newPost">
         <h3>What is ${user.profile ? user.profile.fullName : user.loginId} hacking on right now?</h3>
         <p>
-            <g:form >
+            <g:form class="form" role="form" >
                 <g:hiddenField name="id" value="${params.id}" />
-                <g:textArea name="content" id="postContent" rows="3" cols="50" /><br />
+                <div class="form-group">
+                <g:textArea name="content" id="postContent" class="form-control" rows="3" cols="50" /><br />
                 <g:submitToRemote
                         value="Post"
                         url="[controller: 'post', action: 'addPostAjax']"
                         update="allPosts"
                         onSuccess="clearPost(data)"
                         onLoading="showSpinner(true)"
-                        onComplete="showSpinner(false)" />
+                        onComplete="showSpinner(false)" class="btn btn-primary" />
                 <asset:image src="spinner.gif" id="spinner" style="display: none;" />
-                <a href="#" id="showHideUrl" onclick="toggleTinyUrl(); return false;">
+                <a href="#" id="showHideUrl" class="btn btn-default" onclick="toggleTinyUrl(); return false;">
                     Show TinyUrl
                 </a>
+                </div>
             </g:form>
-            <div id="tinyUrl" style="display: none;">
-                <g:formRemote name="tinyUrlForm" url="[action: 'tinyUrl']" onSuccess="addTinyUrl(data);">
-                    TinyUrl: <g:textField name="fullUrl" />
-                    <g:submitButton name="submit" value="Make Tiny" />
+            <div id="tinyUrl" class="form-group" style="display: none;">
+                <g:formRemote name="tinyUrlForm" url="[action: 'tinyUrl']" onSuccess="addTinyUrl(data);" class="form-inline">
+                    <div class="form-group">
+                    TinyUrl: <g:textField name="fullUrl" class="form-control" />
+                    <g:submitButton name="submit" value="Make Tiny" class="form-control" />
+                    </div>
                 </g:formRemote>
             </div>
         </p>

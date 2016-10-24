@@ -1,5 +1,8 @@
 package com.grailsinaction.hubbub
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured('isAuthenticated()')
 class PostController {
     static scaffold = Post
     static defaultAction = "home"
@@ -54,6 +57,7 @@ class PostController {
         render view: 'timeline', model: [user: user]
     }
 
+    @Secured('permitAll')
     def global() {
         def offset = params.offset ?: 0
         def max = params.max ?: 5
