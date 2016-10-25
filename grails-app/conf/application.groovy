@@ -6,19 +6,22 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.grailsinac
 grails.plugin.springsecurity.authority.className = 'com.grailsinaction.hubbub.Role'
 grails.plugin.springsecurity.userLookup.usernamePropertyName = 'loginId'
 grails.plugin.springsecurity.userLookup.passwordPropertyName = 'passwordHash'
-grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.rejectIfNoRule = true
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-		[pattern:'/'               ,access: ['permitAll']],
-		[pattern:'/error'          ,access: ['permitAll']],
-		[pattern:'/index'          ,access: ['permitAll']],
-		[pattern:'/index.gsp'      ,access: ['permitAll']],
-		[pattern:'/shutdown'       ,access: ['permitAll']],
-		[pattern:'/assets/**'      ,access: ['permitAll']],
-		[pattern:'/**/js/**'       ,access: ['permitAll']],
-		[pattern:'/**/css/**'      ,access: ['permitAll']],
-		[pattern:'/**/images/**'   ,access: ['permitAll']],
-		[pattern:'/**/favicon.ico' ,access: ['permitAll']]
+		[pattern: '/'               ,access: ['permitAll']],
+		[pattern: '/error'          ,access: ['permitAll']],
+		[pattern: '/index'          ,access: ['permitAll']],
+		[pattern: '/index.gsp'      ,access: ['permitAll']],
+		[pattern: '/shutdown'       ,access: ['permitAll']],
+		[pattern: '/assets/**'      ,access: ['permitAll']],
+		[pattern: '/**/js/**'       ,access: ['permitAll']],
+		[pattern: '/**/css/**'      ,access: ['permitAll']],
+		[pattern: '/**/images/**'   ,access: ['permitAll']],
+		[pattern: '/**/favicon.ico',       access: ['permitAll']],
+		[pattern: '/actuatorDashboard/**', access: ['hasRole("ROLE_ADMIN")']],
+		[pattern: '/actuator/**',          access: ['hasRole("ROLE_ADMIN")']]
 ]
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],

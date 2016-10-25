@@ -17,5 +17,10 @@
     <nav aria-label="Page navigation">
         <g:paginate total="${postCount}" max="${max}" />
     </nav>
+    <g:breadcrumb>
+        <g:breadcrumbLink value="Home" />
+        <g:breadcrumbLink value="Post" />
+        <g:breadcrumbLink value="Timeline" />
+    </g:breadcrumb>
 </body>
 </html>

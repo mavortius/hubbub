@@ -16,7 +16,7 @@
             <form id="loginForm" action="${postUrl ?: '/login/authenticate'}" method="post" class="form-signin">
                 <input name="username" value="${loginId}" type="text" class="form-control" placeholder="Username" required autofocus>
                 <input name="password" type="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <button class="btn btn-primary btn-block" type="submit">
                     <span class="glyphicon glyphicon-log-in" aria-hidden="true"> Sign in</span></button>
                 <label class="checkbox pull-left">
                     <input type="checkbox" value="remember-me" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>

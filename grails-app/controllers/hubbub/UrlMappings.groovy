@@ -12,7 +12,7 @@ class UrlMappings {
         "/users/$id"(controller: "post", action: "timeline")
         "/timeline"(controller: "post", action: "personal")
         "/"(view:"/index")
-        "500"(controller: "error", action: "internalServer")
+        "500"(view:'/error')
         "404"(view:'/notFound')
         "/api/posts"(resources: "postRest")
     }
